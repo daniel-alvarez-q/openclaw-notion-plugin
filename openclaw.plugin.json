@@ -1,0 +1,19 @@
+{
+  "id": "stock-quotes",
+  "name": "Stock Quotes",
+  "description": "Add Stock Quotes tools to OpenClaw.",
+  "version": "0.1.0",
+  "configSchema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "tools": [
+      "echo"
+    ]
+  }
+}
