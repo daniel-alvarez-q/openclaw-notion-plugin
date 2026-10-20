@@ -2,8 +2,12 @@ import { Type } from "typebox";
 import { defineToolPlugin } from "openclaw/plugin-sdk/tool-plugin";
 import NotionService from "./notion-client.js";
 
+let service:NotionService|undefined;
+
 function getNotionService(api_key:string):NotionService {
-  const service = new NotionService(api_key);
+  if(!service){
+    service = new NotionService(api_key);
+  }
   return service;
 }
 

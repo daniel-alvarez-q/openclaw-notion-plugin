@@ -38,10 +38,10 @@ class NotionService {
     }
 
     async search(query: string = "", filter_value?: string) {
-        const filter_param: object = { property: 'object', value: filter_value }
+        // const filter_param: object = { property: 'object', value: filter_value }
         return await this.client.search({ query: query }).then(
             (search_response) =>
-                JSON.stringify(search_response)
+                JSON.stringify(search_response.results)
         ).catch((error) => JSON.stringify(error))
     }
 }

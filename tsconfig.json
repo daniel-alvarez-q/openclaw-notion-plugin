@@ -10,6 +10,6 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/index.ts", "src/notion-client.ts"
   ]
 }
