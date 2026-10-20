@@ -1,18 +1,30 @@
 import { Type } from "typebox";
 import { defineToolPlugin } from "openclaw/plugin-sdk/tool-plugin";
+import NotionService from "./notion-client.js";
+
+function getNotionService(api_key:string):NotionService {
+  const service = new NotionService(api_key);
+  return service;
+}
 
 export default defineToolPlugin({
-  id: "stock-quotes",
-  name: "Stock Quotes",
-  description: "Add Stock Quotes tools to OpenClaw.",
+  id: "notion-plugin",
+  name: "Notion Integration Plugin",
+  description: "Enables direct integration with a Notion workspace for OpenClaw Agents.",
+  configSchema:Type.Object({
+    api_key: Type.String()
+  }),
   tools: (tool) => [
     tool({
-      name: "echo",
-      description: "Echo input text.",
+      name: "notion-search",
+      description: "Search interface for Notion objects, including pages and data_sources.",
       parameters: Type.Object({
-        input: Type.String({ description: "Text to echo." }),
+        query: Type.String({ description: "Query seach parameters" }),
       }),
-      execute: async ({ input }) => ({ input }),
+      execute: async ({ query }, config) => {
+        const notion = getNotionService(config.api_key);
+        return await notion.search(query)
+      },
     }),
   ],
 });

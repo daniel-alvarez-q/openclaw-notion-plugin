@@ -1,16 +1,16 @@
 import { Client } from "@notionhq/client";
 
-class NotionClient {
+class NotionService {
     api_key: string;
-    client: Client;
-    object_types: Array<String>;
+    private client: Client;
+    // private object_types: Array<String>;
 
     constructor(key: string) {
         this.api_key = key;
         this.client = new Client({
             auth: this.api_key
         });
-        this.object_types = ['pages', 'data_sources']
+        // this.object_types = ['pages', 'data_sources']
     }
 
     async get_users() {
@@ -46,4 +46,4 @@ class NotionClient {
     }
 }
 
-export default NotionClient
+export default NotionService

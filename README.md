@@ -1,6 +1,6 @@
-# Stock Quotes
+# Notion Integration
 
-Simple OpenClaw tool plugin.
+Base Notion Integration solution for Open Claw
 
 ## Build
 

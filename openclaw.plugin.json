@@ -1,19 +1,25 @@
 {
-  "id": "stock-quotes",
-  "name": "Stock Quotes",
-  "description": "Add Stock Quotes tools to OpenClaw.",
+  "id": "notion-plugin",
+  "name": "Notion Integration Plugin",
+  "description": "Enables direct integration with a Notion workspace for OpenClaw Agents.",
   "version": "0.1.0",
   "configSchema": {
     "type": "object",
-    "properties": {},
-    "additionalProperties": false
+    "required": [
+      "api_key"
+    ],
+    "properties": {
+      "api_key": {
+        "type": "string"
+      }
+    }
   },
   "activation": {
     "onStartup": true
   },
   "contracts": {
     "tools": [
-      "echo"
+      "notion-search"
     ]
   }
 }
