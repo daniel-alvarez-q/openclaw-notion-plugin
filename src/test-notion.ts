@@ -1,4 +1,4 @@
-import NotionService from "./notion-client.js";
+import NotionService from "./notion-client.ts";
 import readlineSync from "readline-sync";
 
 let key = process.env.NOTION_API_KEY

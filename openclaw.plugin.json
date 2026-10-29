@@ -2,7 +2,7 @@
   "id": "notion-plugin",
   "name": "Notion Integration Plugin",
   "description": "Enables direct integration with a Notion workspace for OpenClaw Agents.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "configSchema": {
     "type": "object",
     "required": [
@@ -19,7 +19,10 @@
   },
   "contracts": {
     "tools": [
-      "notion-search"
+      "notion-search",
+      "get-database",
+      "get-page",
+      "create-page"
     ]
   }
 }

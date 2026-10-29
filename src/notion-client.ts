@@ -1,4 +1,6 @@
-import { Client } from "@notionhq/client";
+import {Client, CreateDataSourceParameters, GetDataSourceParameters, CreatePageParameters, UpdatePageParameters} from "@notionhq/client";
+
+/*Notion Service Class*/
 
 class NotionService {
     api_key: string;
@@ -21,6 +23,8 @@ class NotionService {
         )
     }
 
+    /* Databases */
+
     async get_database(database_id: string) {
         return await this.client.databases.retrieve(
             { database_id: database_id }).then(
@@ -31,11 +35,49 @@ class NotionService {
             )
     }
 
+    /* Datasources */
+
+    async get_datasource(params:GetDataSourceParameters){
+        return await this.client.dataSources.retrieve(params).then((response)=>
+            JSON.stringify(response)
+        ).catch((error)=>
+            JSON.stringify(error)
+        )
+    }
+
+    async create_datasource(params:CreateDataSourceParameters){
+        return await this.client.dataSources.create(params).then((response) =>
+            JSON.stringify(response)
+        ).catch((error) =>
+            JSON.stringify(error)
+        )
+    }
+
+    /* Pages */
+
     async get_page(page_id: string) {
         return await this.client.pages.retrieve({ page_id: page_id }).then((page) =>
             JSON.stringify(page)
         ).catch((error) => JSON.stringify(error))
     }
+
+    async create_page(params: CreatePageParameters){
+        return await this.client.pages.create(params).then((response)=>
+            JSON.stringify(response)
+        ).catch((error)=>
+            JSON.stringify(error)
+        )
+    }
+
+    async update_page(params:UpdatePageParameters){
+        return await this.client.pages.update(params).then((response)=>
+            JSON.stringify(response)
+        ).catch((error)=>
+            JSON.stringify(error)
+        )
+    }
+
+    /* Search */
 
     async search(query: string = "", filter_value?: string) {
         // const filter_param: object = { property: 'object', value: filter_value }

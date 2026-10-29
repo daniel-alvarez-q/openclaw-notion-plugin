@@ -30,5 +30,38 @@ export default defineToolPlugin({
         return await notion.search(query)
       },
     }),
+    tool({
+      name: "get-database",
+      description: "Interface for retrieval of a single database instance using its UUID",
+      parameters: Type.Object({
+        database_id: Type.String({description: "Database UUID"})
+      }),
+      execute: async ({database_id}, config) => {
+        const notion = getNotionService(config.api_key);
+        return await notion.get_database(database_id)
+      }
+    }),
+    tool({
+      name: "get-page",
+      description: "Interface for retrieval of a single page instance using its UUID",
+      parameters: Type.Object({
+        page_id: Type.String({description: "Page UUID"})
+      }),
+      execute: async({page_id}, config)=>{
+        const notion = getNotionService(config.api_key);
+        return await notion.get_page(page_id)
+      }
+    }),
+    tool({
+      name: "create-page",
+      description: "Interface for creation of a new page. The tool takes an object of type CreatePageParameters",
+      parameters: Type.Object({
+        params: Type.Object({})
+      }),
+      execute: async({params}, config)=>{
+        const notion = getNotionService(config.api_key);
+        return await notion.create_page(params)
+      }
+    })
   ],
 });

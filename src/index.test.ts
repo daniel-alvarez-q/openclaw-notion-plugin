@@ -4,6 +4,6 @@ import { getToolPluginMetadata } from "openclaw/plugin-sdk/tool-plugin";
 
 describe("stock-quotes", () => {
   it("declares tool metadata", () => {
-    expect(getToolPluginMetadata(entry)?.tools.map((tool) => tool.name)).toEqual(["notion-search"]);
+    expect(getToolPluginMetadata(entry)?.tools.map((tool) => tool.name)).toEqual(["notion-search", "get-database"]);
   });
 }); 
